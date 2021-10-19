@@ -71,14 +71,14 @@ add_action( 'init', 'custom_post_type_team', 0 );
 
 
 /**
- * Jobs
+ * Services
  */
 
-function custom_post_type_job() {
+function custom_post_type_service() {
 
-  $name = 'Jobs';
-  $plural = 'Jobs';
-  $singular = 'Job';
+  $name = 'Services';
+  $plural = 'Services';
+  $singular = 'Service';
 
   $labels = array(
     'name'                  => _x( $name, 'Post Type General Name', 'text_domain' ),
@@ -113,7 +113,7 @@ function custom_post_type_job() {
     'description'           => __( '', 'text_domain' ),
     'labels'                => $labels,
     'supports'              => array( 'title', 'thumbnail', 'page-attributes', 'editor' ),
-    'taxonomies'            => array( 'location', 'job-title', 'job-type', 'category' ),
+    'taxonomies'            => array(),
     'hierarchical'          => true,
     'public'                => true,
     'show_ui'               => true,
@@ -125,106 +125,16 @@ function custom_post_type_job() {
     'can_export'            => true,
     'has_archive'           => true,
     'show_in_rest'          => true,
-    'rewrite'               => array( 'slug' => 'job', 'with_front' => false ),
+    'rewrite'               => array( 'slug' => 'service', 'with_front' => false ),
     'exclude_from_search'   => false,
     'publicly_queryable'    => true,
     'capability_type'       => 'page',
     'show_in_graphql'       => true,
-    'graphql_single_name'   => 'job',
-    'graphql_plural_name'   => 'jobs'
+    'graphql_single_name'   => 'service',
+    'graphql_plural_name'   => 'services'
   );
 
-  register_post_type( 'job', $args );
+  register_post_type( 'service', $args );
 
 }
-add_action( 'init', 'custom_post_type_job', 0 );
-
-// create two taxonomies, genres and writers for the post type "book"
-function create_job_taxonomies() {
-	// Add new taxonomy, make it hierarchical (like categories)
-	$labels = array(
-		'name'              => _x( 'Job Title', 'taxonomy general name' ),
-		'singular_name'     => _x( 'Job Title', 'taxonomy singular name' ),
-		'search_items'      => __( 'Search Job Titles' ),
-		'all_items'         => __( 'All Job Titles' ),
-		'parent_item'       => __( 'Parent Job Title' ),
-		'parent_item_colon' => __( 'Parent Job Title:' ),
-		'edit_item'         => __( 'Edit Job Title' ),
-		'update_item'       => __( 'Update Job Title' ),
-		'add_new_item'      => __( 'Add New Job Title' ),
-		'new_item_name'     => __( 'New Job Title' ),
-		'menu_name'         => __( 'Job Title' ),
-	);
-
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'job-title' ),
-        'show_in_graphql'   => true,
-        'graphql_single_name' => 'jobTitle',
-        'graphql_plural_name' => 'jobTitles',
-	);
-
-	register_taxonomy( 'job-title', array( 'job' ), $args );
-
-	$labels = array(
-		'name'              => _x( 'Location', 'taxonomy general name' ),
-		'singular_name'     => _x( 'Location', 'taxonomy singular name' ),
-		'search_items'      => __( 'Search Locations' ),
-		'all_items'         => __( 'All Locations' ),
-		'parent_item'       => __( 'Parent Location' ),
-		'parent_item_colon' => __( 'Parent Location:' ),
-		'edit_item'         => __( 'Edit Location' ),
-		'update_item'       => __( 'Update Location' ),
-		'add_new_item'      => __( 'Add New Location' ),
-		'new_item_name'     => __( 'New Location' ),
-		'menu_name'         => __( 'Location' ),
-	);
-
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'location' ),
-        'show_in_graphql' => true,
-        'graphql_single_name' => 'location',
-        'graphql_plural_name' => 'locations',
-	);
-
-	register_taxonomy( 'location', array( 'job', 'team' ), $args );
-
-	$labels = array(
-		'name'              => _x( 'Job Type', 'taxonomy general name' ),
-		'singular_name'     => _x( 'Job Type', 'taxonomy singular name' ),
-		'search_items'      => __( 'Search Job Type' ),
-		'all_items'         => __( 'All Job Types' ),
-		'parent_item'       => __( 'Parent Job Type' ),
-		'parent_item_colon' => __( 'Parent Job Type:' ),
-		'edit_item'         => __( 'Edit Job Type' ),
-		'update_item'       => __( 'Update Job Type' ),
-		'add_new_item'      => __( 'Add New Job Type' ),
-		'new_item_name'     => __( 'New Genre Job Type' ),
-		'menu_name'         => __( 'Job Type' ),
-	);
-
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'job-type' ),
-        'show_in_graphql' => true,
-        'graphql_single_name' => 'jobType',
-        'graphql_plural_name' => 'jobTypes',
-	);
-
-	register_taxonomy( 'job-type', array( 'job' ), $args );
-}
-
-add_action( 'init', 'create_job_taxonomies', 0 );
+add_action( 'init', 'custom_post_type_service', 0 );
