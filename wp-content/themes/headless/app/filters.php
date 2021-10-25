@@ -37,6 +37,10 @@ add_filter('acf/settings/load_json', function($paths) {
     $paths[] = get_stylesheet_directory() . '/resources/acf-json';
     return $paths;
 });
+add_filter('acf/fields/google_map/api', function( $api ){
+    $api['key'] = 'AIzaSyCHJcybtjUfUxnEqDIYEFFYwsmDW_oLX44';
+    return $api;
+});
 
 add_filter( 'acf/fields/wysiwyg/toolbars' , function($toolbars) {
 	// Uncomment to view format of $toolbars
