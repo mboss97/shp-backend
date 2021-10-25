@@ -28,15 +28,6 @@ add_action( 'admin_init', function() {
  * Setup ACF JSON
  * - manually set path to 'acf-json' because it doesn't work out of the box
  */
-add_filter('acf/settings/save_json', function($path) {
-    $path = get_stylesheet_directory() . '/resources/acf-json';
-    return $path;
-});
-add_filter('acf/settings/load_json', function($paths) {
-    $paths = [];
-    $paths[] = get_stylesheet_directory() . '/resources/acf-json';
-    return $paths;
-});
 add_filter('acf/fields/google_map/api', function( $api ){
     $api['key'] = 'AIzaSyCHJcybtjUfUxnEqDIYEFFYwsmDW_oLX44';
     return $api;
